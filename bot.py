@@ -1,4 +1,4 @@
-
+            
 from __future__ import annotations
 
 import base64
@@ -668,11 +668,11 @@ _TZ_INDEX_DATA = (
 
 PLAN_LIMITS: Dict[str, Dict[str, Any]] = {
     "free":       {"name": "Free",       "max_bots": 2,   "ram": 128,  "auto_restart": False, "price": 0,    "days": 0},
-    "starter":    {"name": "Starter",    "max_bots": 4,   "ram": 256,  "auto_restart": True,  "price": 99,   "days": 30},
-    "basic":      {"name": "Basic",      "max_bots": 6,  "ram": 512,  "auto_restart": True,  "price": 199,  "days": 30},
-    "pro":        {"name": "Pro",        "max_bots": 8,  "ram": 2048, "auto_restart": True,  "price": 499,  "days": 30},
-    "enterprise": {"name": "Enterprise", "max_bots": 10,  "ram": 4096, "auto_restart": True,  "price": 999,  "days": 30},
-    "lifetime":   {"name": "Lifetime",   "max_bots": 15, "ram": 8192, "auto_restart": True,  "price": 1999, "days": 36500},
+    "starter":    {"name": "စတင်သူ",    "max_bots": 4,   "ram": 256,  "auto_restart": True,  "price": 5000,   "days": 30},
+    "basic":      {"name": "အ‌ေြခခံ",      "max_bots": 6,  "ram": 512,  "auto_restart": True,  "price": 15000,  "days": 30},
+    "pro":        {"name": "ပရိုလ်",        "max_bots": 8,  "ram": 2048, "auto_restart": True,  "price": 20000,  "days": 30},
+    "enterprise": {"name": "စီပွားရေးအတွက်", "max_bots": 10,  "ram": 4096, "auto_restart": True,  "price": 40000,  "days": 30},
+    "lifetime":   {"name": "အကန့်အသန့်မဲ",   "max_bots": 15, "ram": 8192, "auto_restart": True,  "price": 50000, "days": 36500},
 }
 
 PAYMENT_METHODS: Dict[str, Dict[str, Any]] = {
@@ -713,14 +713,14 @@ _PHOTO_SPECS: Dict[str, Tuple[str, str, str]] = {
     "main":      ("Mᴀɪɴ Mᴇɴᴜ",       "#1E1B4B", "Cʜᴏᴏꜱᴇ Aɴ Oᴘᴛɪᴏɴ"),
     "tunnel":    ("Pᴜʙʟɪᴄ Uʀʟ",      "#0E7490", "Cʟᴏᴜᴅꜰʟᴀʀᴇ Tᴜɴɴᴇʟ"),
     "bots":      ("Yᴏᴜʀ Bᴏᴛꜱ",       "#0E7490", "Mᴀɴᴀɢᴇ & Dᴇᴘʟᴏʏ"),
-    "upload":    ("Uᴘʟᴏᴀᴅ & Dᴇᴘʟᴏʏ", "#4338CA", "Sᴇɴᴅ Yᴏᴜʀ Fɪʟᴇꜱ"),
-    "plans":     ("Pʟᴀɴꜱ ",         "#B45309", "Pɪᴄᴋ A Tɪᴇʀ"),
-    "buy":       ("Bᴜʏ Pʟᴀɴ",        "#065F46", "Cʜᴇᴄᴋᴏᴜᴛ"),
+    "upload":    ("📤 ဖိုင်တင်ရန်", "#4338CA", "Sᴇɴᴅ Yᴏᴜʀ Fɪʟᴇꜱ"),
+    "plans":     ("ပလန် ",         "#B45309", "Pɪᴄᴋ A Tɪᴇʀ"),
+    "buy":       ("ပလန်ဝယ်ယူရန်",        "#065F46", "Cʜᴇᴄᴋᴏᴜᴛ"),
     "pay":       ("Pᴀʏᴍᴇɴᴛ",         "#0E7490", "Sᴇɴᴅ Pʀᴏᴏꜰ"),
-    "profile":   ("Pʀᴏꜰɪʟᴇ",         "#1E3A8A", "Yᴏᴜʀ Aᴄᴄᴏᴜɴᴛ"),
-    "wallet":    ("Wᴀʟʟᴇᴛ",          "#047857", "Tᴏᴘ-Uᴘ & Bᴀʟᴀɴᴄᴇ"),
-    "referral":  ("Rᴇꜰᴇʀʀᴀʟ",        "#9333EA", "Iɴᴠɪᴛᴇ & Eᴀʀɴ"),
-    "help":      ("Hᴇʟᴘ",            "#334155", "Hᴏᴡ Iᴛ Wᴏʀᴋꜱ"),
+    "profile":   ("ပရိုလ်ဖိုင်",         "#1E3A8A", "Yᴏᴜʀ Aᴄᴄᴏᴜɴᴛ"),
+    "wallet":    ("လက်ကျန်ငွေ",          "#047857", "Tᴏᴘ-Uᴘ & Bᴀʟᴀɴᴄᴇ"),
+    "referral":  ("ဖိတ်ခေါ်မည်",        "#9333EA", "Iɴᴠɪᴛᴇ & Eᴀʀɴ"),
+    "help":      ("အကူအညီ",            "#334155", "Hᴏᴡ Iᴛ Wᴏʀᴋꜱ"),
     "support":   ("Sᴜᴘᴘᴏʀᴛ",         "#0F766E", "Tᴀʟᴋ Tᴏ Uꜱ"),
     "ticket":    ("Tɪᴄᴋᴇᴛꜱ",         "#0F766E", "Oᴘᴇɴ A Tɪᴄᴋᴇᴛ"),
     "admin":     ("Aᴅᴍɪɴ Pᴀɴᴇʟ",     "#7C2D12", "Rᴇꜱᴛʀɪᴄᴛᴇᴅ Aʀᴇᴀ"),
@@ -729,7 +729,7 @@ _PHOTO_SPECS: Dict[str, Tuple[str, str, str]] = {
     "security":  ("Sᴇᴄᴜʀɪᴛʏ",        "#991B1B", "Aᴜᴅɪᴛ & Kᴇʏꜱ"),
     "bot":       ("Bᴏᴛ Cᴏɴᴛʀᴏʟ",     "#1F2937", "Sᴛᴀʀᴛ • Sᴛᴏᴘ • Lᴏɢꜱ"),
     "logs":      ("Lɪᴠᴇ Lᴏɢꜱ",       "#0F172A", "Sᴛᴅᴏᴜᴛ / Sᴛᴅᴇʀʀ"),
-    "trial":     ("Fʀᴇᴇ Tʀɪᴀʟ",      "#A21CAF", "Tʀʏ Pʀᴇᴍɪᴜᴍ Fʀᴇᴇ"),
+    "trial":     ("အခမဲ့ အစမ်းသုံး",      "#A21CAF", "Tʀʏ Pʀᴇᴍɪᴜᴍ Fʀᴇᴇ"),
     "coupon":    ("Cᴏᴜᴘᴏɴ",          "#B91C1C", "Rᴇᴅᴇᴇᴍ Cᴏᴅᴇ"),
     "gift":      ("Gɪꜰᴛ Pʟᴀɴ",       "#9D174D", "Sᴇɴᴅ Tᴏ A Fʀɪᴇɴᴅ"),
     "broadcast": ("Bʀᴏᴀᴅᴄᴀꜱᴛ",       "#1E40AF", "Rᴇᴀᴄʜ Aʟʟ Uꜱᴇʀꜱ"),
@@ -739,7 +739,7 @@ _PHOTO_SPECS: Dict[str, Tuple[str, str, str]] = {
     "bot_config":    ("Bᴏᴛ Cᴏɴꜰɪɢ",        "#1F2937", "Lɪᴍɪᴛꜱ & Sᴀɴᴅʙᴏx"),
     "appearance":    ("Aᴘᴘᴇᴀʀᴀɴᴄᴇ",        "#4338CA", "Tʜᴇᴍᴇ & Sᴛʏʟᴇ"),
     "templates":     ("Tᴇᴍᴘʟᴀᴛᴇꜱ",         "#0E7490", "Mᴇꜱꜱᴀɢᴇ Tᴇᴍᴘʟᴀᴛᴇꜱ"),
-    "referral_adm":  ("Rᴇꜰᴇʀʀᴀʟ Sʏꜱ",     "#9333EA", "Iɴᴠɪᴛᴇ & Eᴀʀɴ"),
+    "referral_adm":  ("ဖိတ်ခေါ်ခြင်း Sʏꜱ",     "#9333EA", "Iɴᴠɪᴛᴇ & Eᴀʀɴ"),
     "janitor":       ("Jᴀɴɪᴛᴏʀ",            "#451A03", "Aᴜᴛᴏ-Cʟᴇᴀɴᴜᴘ"),
     "webhooks":      ("Wᴇʙʜᴏᴏᴋꜱ",          "#0F766E", "Hᴏᴏᴋ Mᴀɴᴀɢᴇʀ"),
     "features":      ("Fᴇᴀᴛᴜʀᴇ Fʟᴀɢꜱ",    "#B45309", "Tᴏɢɢʟᴇ Fᴜɴᴄᴛɪᴏɴꜱ"),
@@ -1820,27 +1820,27 @@ _LOCALE_INDEX_DATA = (
 def main_menu_kb(admin: bool = False) -> types.InlineKeyboardMarkup:
     kb = types.InlineKeyboardMarkup(row_width=2)
     kb.add(
-        Btn(f"  Mʏ Bᴏᴛꜱ",   callback_data="menu_bots",     style="primary"),
-        Btn(f" Uᴘʟᴏᴀᴅ Bᴏᴛ",   callback_data="menu_upload",   style="primary"),
+        Btn(f"  📁 ကျွန်ုပ်၏ဖိုင်များ",   callback_data="menu_bots",     style="primary"),
+        Btn(f" 📤 ဖိုင်တင်ရန်",   callback_data="menu_upload",   style="primary"),
     )
     kb.add(
-        Btn(f"Pʟᴀɴꜱ",        callback_data="menu_plans",    style="primary"),
-        Btn(f" Bᴜʏ Pʟᴀɴ",    callback_data="menu_buy",      style="primary"),
+        Btn(f"ပလန်",        callback_data="menu_plans",    style="primary"),
+        Btn(f" ပလန်ဝယ်ယူရန်",    callback_data="menu_buy",      style="primary"),
     )
     kb.add(
-        Btn(f"Rᴇꜰᴇʀʀᴀʟ",    callback_data="menu_referral", style="primary"),
-        Btn(f"Pʀᴏꜰɪʟᴇ",      callback_data="menu_profile",  style="primary"),
+        Btn(f"ဖိတ်ခေါ်မည်",    callback_data="menu_referral", style="primary"),
+        Btn(f"ပရိုလ်ဖိုင်",      callback_data="menu_profile",  style="primary"),
     )
     kb.add(
-        Btn(f" Wᴀʟʟᴇᴛ",     callback_data="menu_wallet",   style="primary"),
+        Btn(f" လက်ကျန်ငွေ",     callback_data="menu_wallet",   style="primary"),
         Btn(f"Tɪᴄᴋᴇᴛꜱ",    callback_data="menu_tickets",  style="primary"),
     )
     kb.add(
-        Btn(f" Fʀᴇᴇ Tʀɪᴀʟ",    callback_data="menu_trial",    style="primary"),
+        Btn(f" အခမဲ့ အစမ်းသုံး",    callback_data="menu_trial",    style="primary"),
         Btn(f" Cᴏᴜᴘᴏɴ",        callback_data="menu_coupon",   style="primary"),
     )
     kb.add(
-        Btn(f"Hᴇʟᴘ",          callback_data="menu_help",     style="primary"),
+        Btn(f"အကူအညီ",          callback_data="menu_help",     style="primary"),
         Btn(f"Sᴜᴘᴘᴏʀᴛ", callback_data="menu_support",  style="primary"),
     )
     kb.add(
@@ -1884,7 +1884,7 @@ def payments_kb(plan: Optional[str] = None) -> types.InlineKeyboardMarkup:
     suffix = f"_{plan}" if plan else ""
     for k, v in PAYMENT_METHODS.items():
         kb.add(Btn(f"{v['tag']}  {sc(v['name'])}", callback_data=f"pay_{k}{suffix}", style="success"))
-    kb.add(Btn(f"{G['back']}  Pʟᴀɴꜱ", callback_data="menu_plans", style="primary"))
+    kb.add(Btn(f"{G['back']}  ပလန်", callback_data="menu_plans", style="primary"))
     return kb
 
 
@@ -1964,7 +1964,7 @@ def admin_kb() -> types.InlineKeyboardMarkup:
         Btn("📝  Tᴇᴍᴘʟᴀᴛᴇꜱ",        callback_data="adm_templates",      style="primary"),
     )
     kb.add(
-        Btn("🔗  Rᴇꜰᴇʀʀᴀʟ Sʏꜱ",    callback_data="adm_referral_sys",   style="success"),
+        Btn("🔗  ဖိတ်ခေါ်ခြင်း Sʏꜱ",    callback_data="adm_referral_sys",   style="success"),
         Btn("🧹  Jᴀɴɪᴛᴏʀ",          callback_data="adm_janitor",        style="danger"),
     )
     kb.add(
@@ -2052,7 +2052,7 @@ def bot_actions_kb(bot_id: str, running: bool, premium: bool = False) -> types.I
                    style="danger" if is_open else "success"))
     kb.add(Btn(f"{G['arrow']}  Dᴏᴡɴʟᴏᴀᴅ", callback_data=f"bot_dl_{bot_id}", style="primary"))
     kb.add(Btn(f"{G['no']}  Dᴇʟᴇᴛᴇ",       callback_data=f"bot_delete_{bot_id}", style="danger"))
-    kb.add(Btn(f"{G['back']}  Mʏ Bᴏᴛꜱ",    callback_data="menu_bots",            style="primary"))
+    kb.add(Btn(f"{G['back']}  📁 ကျွန်ုပ်၏ဖိုင်များ",    callback_data="menu_bots",            style="primary"))
     return kb
 
 
@@ -9176,7 +9176,7 @@ def render_adm_ref_rewards(call: types.CallbackQuery) -> None:
         Btn("💰  Sᴇᴛ Bᴀꜱᴇ Rᴇᴡᴀʀᴅ",   callback_data="adm_ref_set_reward",      style="primary"),
         Btn("✏️  Sᴇᴛ Bᴏɴᴜꜱ Tʜʀ",     callback_data="adm_bc_set_referral_bonus_threshold", style="primary"),
     )
-    kb.add(Btn(f"{G['back']}  Rᴇꜰᴇʀʀᴀʟ Sʏꜱ", callback_data="adm_referral_sys", style="primary"))
+    kb.add(Btn(f"{G['back']}  ဖိတ်ခေါ်ခြင်း Sʏꜱ", callback_data="adm_referral_sys", style="primary"))
     show_menu(call.message.chat.id, PHOTOS.get("referral_adm", PHOTOS["referral"]), cap, kb, call=call)
 
 
@@ -14078,10 +14078,10 @@ def _monitor_system_stats():
     return stats
 
 
-def _progress_bar_stats(current, total, width=12):
+def _progress_bar(current, total, width=12):
     if total <= 0:
         return "░" * width + " 0%"
-    pct = min(current / total, 1.0)
+    pct    = min(current / total, 1.0)
     filled = int(pct * width)
     return "█" * filled + "░" * (width - filled) + f" {pct*100:.1f}%"
 
@@ -14483,7 +14483,7 @@ def render_adm_broadcast_status(call):
         sent  = st.get("sent", 0)
         fail  = st.get("failed", 0)
         lines.append(f"  {'✅' if done else '🔄'} <code>{jid}</code>")
-        lines.append(f"     {_progress_bar_stats(sent+fail, total)}")
+        lines.append(f"     {_progress_bar(sent+fail, total)}")
         lines.append(f"     Sent:{sent} Failed:{fail} Total:{total}")
     lines.append(G["div"] + FOOTER)
     show_menu(call.message.chat.id, PHOTOS["admin"], "\n".join(lines), _adm_back("menu_admin"), call=call)
