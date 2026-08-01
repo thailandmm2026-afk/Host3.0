@@ -564,7 +564,7 @@ try:
 except (TypeError, ValueError):
     KEEPALIVE_PORT = 10000
 
-BRAND       = "ѕιмяαη нoѕтιηg ＲΒOT"
+BRAND       = "𝗠𝗿.𝗛𝗼𝘀𝘁𝗶𝗻𝗴 𝗕𝗼𝘁 𝗣𝗿𝗲𝗺𝗶𝘂𝗺"
 BRAND_VER   = "v2.1"
 BRAND_TAG   = f"{BRAND} {BRAND_VER}"
 SUPPORT_USR = "@kiki20251"
@@ -676,12 +676,8 @@ PLAN_LIMITS: Dict[str, Dict[str, Any]] = {
 }
 
 PAYMENT_METHODS: Dict[str, Dict[str, Any]] = {
-    "bkash":   {"name": "bKash",       "number": "01306633616",         "type": "Send Money",       "tag": "[B]"},
-    "nagad":   {"name": "Nagad",       "number": "01306633616",         "type": "Send Money",       "tag": "[N]"},
-    "rocket":  {"name": "Rocket",      "number": "01306633616",         "type": "Send Money",       "tag": "[R]"},
-    "upay":    {"name": "Upay",        "number": "01306633616",         "type": "Send Money",       "tag": "[U]"},
-    "binance": {"name": "Binance Pay", "number": "Binance ID 758637628","type": "USDT (BEP20/TRC20)","tag": "[BP]"},
-    "bank":    {"name": "Bank",        "number": "Contact admin",       "type": "Bank Transfer",    "tag": "[BK]"},
+    "bkash":   {"name": "Kpay",       "number": "09446787195",         "type": "Send Money",       "tag": "[B]"},
+    "nagad":   {"name": "Wave Pay",       "number": "09667102005",         "type": "Send Money",       "tag": "[N]"},
 }
 
 SECRET_ENV_NAMES = {
@@ -722,7 +718,7 @@ _PHOTO_SPECS: Dict[str, Tuple[str, str, str]] = {
     "referral":  ("ဖိတ်ခေါ်မည်",        "#9333EA", "Iɴᴠɪᴛᴇ & Eᴀʀɴ"),
     "help":      ("အကူအညီ",            "#334155", "Hᴏᴡ Iᴛ Wᴏʀᴋꜱ"),
     "support":   ("Sᴜᴘᴘᴏʀᴛ",         "#0F766E", "Tᴀʟᴋ Tᴏ Uꜱ"),
-    "ticket":    ("Tɪᴄᴋᴇᴛꜱ",         "#0F766E", "Oᴘᴇɴ A Tɪᴄᴋᴇᴛ"),
+    "ticket":    ("လက်မှတ်များ",         "#0F766E", "Oᴘᴇɴ A Tɪᴄᴋᴇᴛ"),
     "admin":     ("Aᴅᴍɪɴ Pᴀɴᴇʟ",     "#7C2D12", "Rᴇꜱᴛʀɪᴄᴛᴇᴅ Aʀᴇᴀ"),
     "stats":     ("Sᴛᴀᴛꜱ",           "#14532D", "Lɪᴠᴇ Nᴜᴍʙᴇʀꜱ"),
     "github":    ("Gɪᴛʜᴜʙ Bᴀᴄᴋᴜᴘ",   "#24292E", "Sʏɴᴄ & Rᴇꜱᴛᴏʀᴇ"),
@@ -730,7 +726,7 @@ _PHOTO_SPECS: Dict[str, Tuple[str, str, str]] = {
     "bot":       ("Bᴏᴛ Cᴏɴᴛʀᴏʟ",     "#1F2937", "Sᴛᴀʀᴛ • Sᴛᴏᴘ • Lᴏɢꜱ"),
     "logs":      ("Lɪᴠᴇ Lᴏɢꜱ",       "#0F172A", "Sᴛᴅᴏᴜᴛ / Sᴛᴅᴇʀʀ"),
     "trial":     ("အခမဲ့ အစမ်းသုံး",      "#A21CAF", "Tʀʏ Pʀᴇᴍɪᴜᴍ Fʀᴇᴇ"),
-    "coupon":    ("Cᴏᴜᴘᴏɴ",          "#B91C1C", "Rᴇᴅᴇᴇᴍ Cᴏᴅᴇ"),
+    "coupon":    ("ကွန်ပွန်",          "#B91C1C", "Rᴇᴅᴇᴇᴍ Cᴏᴅᴇ"),
     "gift":      ("Gɪꜰᴛ Pʟᴀɴ",       "#9D174D", "Sᴇɴᴅ Tᴏ A Fʀɪᴇɴᴅ"),
     "broadcast": ("Bʀᴏᴀᴅᴄᴀꜱᴛ",       "#1E40AF", "Rᴇᴀᴄʜ Aʟʟ Uꜱᴇʀꜱ"),
     "maint":         ("Mᴀɪɴᴛᴇɴᴀɴᴄᴇ",      "#451A03", "Rᴇᴀᴅ-Oɴʟʏ Mᴏᴅᴇ"),
@@ -1833,11 +1829,11 @@ def main_menu_kb(admin: bool = False) -> types.InlineKeyboardMarkup:
     )
     kb.add(
         Btn(f" လက်ကျန်ငွေ",     callback_data="menu_wallet",   style="primary"),
-        Btn(f"Tɪᴄᴋᴇᴛꜱ",    callback_data="menu_tickets",  style="primary"),
+        Btn(f"လက်မှတ်များ",    callback_data="menu_tickets",  style="primary"),
     )
     kb.add(
         Btn(f" အခမဲ့ အစမ်းသုံး",    callback_data="menu_trial",    style="primary"),
-        Btn(f" Cᴏᴜᴘᴏɴ",        callback_data="menu_coupon",   style="primary"),
+        Btn(f" ကွန်ပွန်",        callback_data="menu_coupon",   style="primary"),
     )
     kb.add(
         Btn(f"အကူအညီ",          callback_data="menu_help",     style="primary"),
@@ -1908,7 +1904,7 @@ def admin_kb() -> types.InlineKeyboardMarkup:
     )
     kb.add(
         Btn(f"{G['key']}  Cᴏᴜᴘᴏɴꜱ",         callback_data="adm_coupons",  style="primary"),
-        Btn(f"{G['ticket']}  Tɪᴄᴋᴇᴛꜱ",      callback_data="adm_tickets",  style="primary"),
+        Btn(f"{G['ticket']}  လက်မှတ်များ",      callback_data="adm_tickets",  style="primary"),
     )
     kb.add(
         Btn(f"{G['shield']}  Aᴅᴍɪɴꜱ",       callback_data="adm_admins",   style="primary"),
@@ -12912,7 +12908,7 @@ _HELP_PAGES = {
             "Basic: 3 bots, 100 MB\n"
             "Pro: 10 bots, 500 MB\n"
             "Ultra: unlimited bots, 2 GB\n\n"
-            "Pay via UPI/Crypto/PayPal → send proof → admin approves"
+            "Pay via Kpay/WavePay→ send proof → admin approves"
         ),
     },
     "github": {
