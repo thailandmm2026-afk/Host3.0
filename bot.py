@@ -676,8 +676,8 @@ PLAN_LIMITS: Dict[str, Dict[str, Any]] = {
 }
 
 PAYMENT_METHODS: Dict[str, Dict[str, Any]] = {
-    "bkash":   {"name": "Kpay",       "number": "09446787195",         "type": "Send Money",       "tag": "[B]"},
-    "nagad":   {"name": "Wave Pay",       "number": "09667102005",         "type": "Send Money",       "tag": "[N]"},
+    "bkash":   {"name": "Kpay",       "number": "09446787195",         "type": "Send Money",       "tag": "[K]"},
+    "nagad":   {"name": "Wave Pay",       "number": "09667102005",         "type": "Send Money",       "tag": "[W]"},
 }
 
 SECRET_ENV_NAMES = {
@@ -4395,7 +4395,7 @@ def render_main_menu(chat_id: int, uid: int,
         f"{bullet('Plan',  plan['name'])}\n"
         f"{bullet('Until', fmt_ts(u.get('plan_expires')) if u.get('plan_expires') else 'Forever' if plan['price'] == 0 else '—')}\n"
         f"{bullet('Bots',  f'{len(bots)} / {user_max_bots(u)}  (running {running})')}\n"
-        f"{bullet('Wallet', '{}$'.format(u.get('wallet', 0)))}\n"
+        f"{bullet('Wallet', '{}ကျပ်'.format(u.get('wallet', 0)))}\n"
         f"{G['div']}\n"
         f"Choose an option below.{FOOTER}"
     )
@@ -4849,7 +4849,7 @@ def render_plan_detail(call: types.CallbackQuery, plan: str) -> None:
         f"{bullet('RAM per bot',  '{} MB'.format(p['ram']))}\n"
         f"{bullet('Auto-restart', 'Yes' if p['auto_restart'] else 'No')}\n"
         f"{bullet('Duration',     'Lifetime' if plan == 'lifetime' else '{} days'.format(p['days']))}\n"
-        f"{bullet('Price',        'Free' if p['price'] == 0 else '{}$'.format(p['price']))}\n"
+        f"{bullet('Price',        'Free' if p['price'] == 0 else '{}ကျပ်'.format(p['price']))}\n"
         f"{G['div']}\n"
         f"{sc('Tap buy to choose a payment method')}.{FOOTER}"
     )
@@ -4880,7 +4880,7 @@ def render_payment_methods_for(call: types.CallbackQuery, plan: str) -> None:
         f"<b>{G['wallet']} {sc('Choose Payment Method')}</b>\n"
         f"{G['div_eq']}\n"
         f"{bullet('Plan',  p['name'])}\n"
-        f"{bullet('Price', '{}$'.format(p['price']))}\n"
+        f"{bullet('Price', '{}ကျပ်'.format(p['price']))}\n"
         f"{G['div']}\n"
         f"{sc('Pick the method you will pay with')}.{FOOTER}"
     )
@@ -4903,7 +4903,7 @@ def render_payment_screen(call: types.CallbackQuery, data: str) -> None:
         f"{bullet('Type',   pm['type'])}\n"
     )
     if p:
-        cap += f"{bullet('Plan', p['name'])}\n{bullet('Amount', '{}$'.format(p['price']))}\n"
+        cap += f"{bullet('Plan', p['name'])}\n{bullet('Amount', '{}ကျပ်'.format(p['price']))}\n"
     cap += (
         f"{G['div']}\n"
         f"<b>{sc('How to pay')}:</b>\n"
@@ -4949,7 +4949,7 @@ def render_profile(call: types.CallbackQuery) -> None:
         f"{bullet('User ID',  uid)}\n"
         f"{bullet('Plan',     p['name'])}\n"
         f"{bullet('Until',    fmt_ts(u.get('plan_expires')) if u.get('plan_expires') else ('Forever' if p['price'] == 0 else '—'))}\n"
-        f"{bullet('Wallet',   '{}$'.format(u.get('wallet', 0)))}\n"
+        f"{bullet('Wallet',   '{}ကျပ်'.format(u.get('wallet', 0)))}\n"
         f"{bullet('Bots',     f'{len(bots)} / {user_max_bots(u)}')}\n"
         f"{bullet('Joined',   fmt_ts(u.get('joined')))}\n"
         f"{bullet('KYC',      'Verified' if u.get('kyc') else 'No')}\n"
@@ -4983,7 +4983,7 @@ def render_wallet(call: types.CallbackQuery) -> None:
     cap = (
         f"<b>{G['wallet']} {sc('Wallet')}</b>\n"
         f"{G['div_eq']}\n"
-        f"{bullet('Balance', '{}$'.format(u.get('wallet', 0)))}\n"
+        f"{bullet('Balance', '{}ကျပ်'.format(u.get('wallet', 0)))}\n"
         f"{G['div']}\n"
         f"{sc('Top up by sending payment proof. Admin will credit your wallet')}.\n"
         f"{sc('You can also gift your active plan to another user')}.{FOOTER}"
@@ -5140,7 +5140,7 @@ def render_user_stats(call: types.CallbackQuery) -> None:
         f"<b>{sc('Payments')}</b>\n"
         f"{bullet('Total Payments', len(pays))}\n"
         f"{bullet('Last Payment',   fmt_ts(last_pay) if last_pay else '—')}\n"
-        f"{bullet('Wallet Balance', '{}$'.format(u.get('wallet', 0)))}\n"
+        f"{bullet('Wallet Balance', '{}ကျပ်'.format(u.get('wallet', 0)))}\n"
         f"{G['div']}\n"
         f"<b>{sc('Other')}</b>\n"
         f"{bullet('Referrals',     u.get('ref_count', 0))}\n"
@@ -6189,7 +6189,7 @@ def render_admin_subroute(call: types.CallbackQuery, data: str) -> None:
         return render_adm_app_banner(call)
     if data == "adm_bc_set_currency_symbol":
         USER_STATES[call.from_user.id] = {"flow": "await_adm_bc_set", "bc_key": "currency_symbol"}
-        bot.send_message(call.message.chat.id, f"{G['settings']} Send new currency symbol (e.g. ₹ $ €):", parse_mode="HTML"); return
+        bot.send_message(call.message.chat.id, f"{G['settings']} Send new currency symbol (e.g. ကျပ်):", parse_mode="HTML"); return
     if data.startswith("adm_bc_set_currency_") and len(data.split("_")) >= 6:
         parts = data[len("adm_bc_set_currency_"):].split("_", 1)
         if len(parts) == 2:
@@ -6499,7 +6499,7 @@ def render_adm_stats(call: types.CallbackQuery) -> None:
         f"{bullet('New this week', new_week)}\n"
         f"{bullet('Total bots',   len(bots))}\n"
         f"{bullet('Bots running', sum(1 for x in RUNNING.values() if x['proc'].poll() is None))}\n"
-        f"{bullet('Revenue',      '{}$'.format(revenue))}\n"
+        f"{bullet('Revenue',      '{}ကျပ်'.format(revenue))}\n"
         f"{bullet('Storage',      fmt_bytes(storage_size))}\n"
         f"{bullet('Panel RSS',    fmt_bytes(rss))}\n"
         f"{bullet('Uptime',       fmt_dur(int(time.time() * 1000) - START_TS))}\n"
@@ -8560,14 +8560,14 @@ def render_adm_pay_currency(call: types.CallbackQuery) -> None:
         f"{bullet('Currency Code', cur)}\n"
         f"{bullet('Symbol',        sym)}\n"
         f"{G['div']}\n"
-        f"{sc('Examples')}: BDT/৳, USD/$, EUR/€, INR/₹, PKR/₨{FOOTER}"
+        f"{sc('Examples')}: ကျပ်{FOOTER}"
     )
     kb = types.InlineKeyboardMarkup(row_width=2)
     kb.add(
         Btn("🔤  Sᴇᴛ Cᴏᴅᴇ",     callback_data="adm_bc_set_payment_currency", style="primary"),
         Btn("💲  Sᴇᴛ Sʏᴍʙᴏʟ",   callback_data="adm_bc_set_currency_symbol",  style="primary"),
     )
-    for code, sym_str in [("BDT","৳"),("USD","$"),("EUR","€"),("INR","₹"),("PKR","₨")]:
+    for code, sym_str in [("BDT","৳"),("USD","ကျပ်"),("EUR","€"),("INR","₹"),("PKR","₨")]:
         kb.add(Btn(f"{code} {sym_str}", callback_data=f"adm_bc_set_currency_{code}_{sym_str}", style="primary"))
     kb.add(Btn(f"{G['back']}  Pᴀʏ Cᴏɴꜰɪɢ", callback_data="adm_pay_config", style="primary"))
     show_menu(call.message.chat.id, PHOTOS.get("pay_config", PHOTOS["admin"]), cap, kb, call=call)
@@ -11744,7 +11744,7 @@ def _handle_bot_upload(m: types.Message) -> None:
         bot.reply_to(m, f"{G['no']} {sc('File too big')} (>{MAX_UPLOAD_BYTES // (1024*1024)} Mʙ).")
         return
     fname = doc.file_name or "upload.bin"
-    if not re.match(r"^[A-Za-z0-9._\-]+$", fname):
+    if not re.match(r"^[A-Za-z0-9._\-]+ကျပ်", fname):
         bot.reply_to(m, f"{G['warn']} {sc('Suspicious filename, please rename')}.")
         return
     try:
@@ -12008,7 +12008,7 @@ def _handle_env_kv(m: types.Message, st: Dict[str, Any]) -> None:
         bot.reply_to(m, f"{G['no']} {sc('Use')} <code>Kᴇʏ=Vᴀʟᴜᴇ</code>.", parse_mode="HTML"); return
     key, _, value = text.partition("=")
     key = key.strip(); value = value.strip()
-    if not re.match(r"^[A-Za-z_][A-Za-z0-9_]*$", key):
+    if not re.match(r"^[A-Za-z_][A-Za-z0-9_]*ကျပ်", key):
         bot.reply_to(m, f"{G['no']} {sc('Invalid key')}."); return
     if key in SECRET_ENV_NAMES:
         bot.reply_to(m, f"{G['no']} {sc('That env name is protected')}."); return
@@ -12031,7 +12031,7 @@ def _handle_pip_install(m: types.Message, st: Dict[str, Any]) -> None:
         bot.reply_to(m, f"{G['no']} {sc('Nothing to install')}."); return
     # only allow safe package spec characters; block flags/shell metas
     pkgs = [p for p in text.split() if p]
-    bad = [p for p in pkgs if not re.match(r"^[A-Za-z0-9_\-\.\[\]=<>!~,+]+$", p) or p.startswith("-")]
+    bad = [p for p in pkgs if not re.match(r"^[A-Za-z0-9_\-\.\[\]=<>!~,+]+ကျပ်", p) or p.startswith("-")]
     if bad:
         bot.reply_to(
             m,
@@ -12146,7 +12146,7 @@ def _handle_admin_finduser(m: types.Message) -> None:
         f"{bullet('Username', '@' + (target.get('username') or '—'))}\n"
         f"{bullet('Plan',     PLAN_LIMITS.get(target.get('plan'), {}).get('name'))}\n"
         f"{bullet('Until',    fmt_ts(target.get('plan_expires')))}\n"
-        f"{bullet('Wallet',   '{}$'.format(target.get('wallet', 0)))}\n"
+        f"{bullet('Wallet',   '{}ကျပ်'.format(target.get('wallet', 0)))}\n"
         f"{bullet('Banned',   target.get('banned'))}\n"
         f"{bullet('KYC',      target.get('kyc'))}\n"
         f"{bullet('Bots',     len(bots))}\n"
@@ -12452,7 +12452,7 @@ def _handle_payment_proof(m: types.Message, st: Dict[str, Any]) -> None:
         f"{bullet('From',   m.from_user.id)}\n"
         f"{bullet('Method', method)}\n"
         f"{bullet('Plan',   plan or '—')}\n"
-        f"{bullet('Amount', '{}$'.format((p or {}).get('price', 0)))}\n"
+        f"{bullet('Amount', '{}ကျပ်'.format((p or {}).get('price', 0)))}\n"
         f"{sc('Tap below to approve or reject')}.",
     )
     kb = types.InlineKeyboardMarkup()
@@ -12505,7 +12505,7 @@ def _handle_topup_proof(m: types.Message) -> None:
         f"<b>{G['wallet']} ᴡᴀʟʟᴇᴛ ᴛᴏᴘᴜᴘ</b>\n"
         f"{bullet('ID',     pid)}\n"
         f"{bullet('From',   m.from_user.id)}\n"
-        f"{bullet('Amount', '{}$'.format(amt))}"
+        f"{bullet('Amount', '{}ကျပ်'.format(amt))}"
     )
     try:
         bot.send_message(OWNER_ID, f"<b>{sc('Decide')} #{pid}</b>",
@@ -12540,7 +12540,7 @@ def action_payment_approve(call: types.CallbackQuery, pid: str) -> None:
             try:
                 bot.send_message(pay["uid"],
                                  f"<b>{G['ok']} {sc('Wallet credited')}</b>\n"
-                                 f"{bullet('Amount', '{}$'.format(pay['amount']))}",
+                                 f"{bullet('Amount', '{}ကျပ်'.format(pay['amount']))}",
                                  parse_mode="HTML")
             except Exception:
                 pass
@@ -14074,7 +14074,7 @@ def _monitor_system_stats():
     return stats
 
 
-def _progress_bar(current, total, width=12):
+def _progress_bar_ratio(current, total, width=12):
     if total <= 0:
         return "░" * width + " 0%"
     pct    = min(current / total, 1.0)
@@ -14139,7 +14139,7 @@ def _gen_coupon_code(prefix="", length=8):
 
 def _parse_duration(s):
     import re
-    m = re.match(r"^(\d+)\s*([dhms]?)$", s.strip().lower())
+    m = re.match(r"^(\d+)\s*([dhms]?)ကျပ်", s.strip().lower())
     if not m: return 0
     return int(m.group(1)) * {"d":86400,"h":3600,"m":60,"s":1}.get(m.group(2) or "s", 1)
 
@@ -14170,7 +14170,7 @@ def _iso_now_plus_days(days):
 
 def _validate_bot_token_format(token):
     import re
-    return bool(re.match(r"^\d{8,10}:[A-Za-z0-9_-]{35}$", token.strip()))
+    return bool(re.match(r"^\d{8,10}:[A-Za-z0-9_-]{35}ကျပ်", token.strip()))
 
 def _validate_url(url):
     return url.startswith(("http://","https://")) and "." in url
@@ -14479,7 +14479,7 @@ def render_adm_broadcast_status(call):
         sent  = st.get("sent", 0)
         fail  = st.get("failed", 0)
         lines.append(f"  {'✅' if done else '🔄'} <code>{jid}</code>")
-        lines.append(f"     {_progress_bar(sent+fail, total)}")
+        lines.append(f"     {_progress_bar_ratio(sent+fail, total)}")
         lines.append(f"     Sent:{sent} Failed:{fail} Total:{total}")
     lines.append(G["div"] + FOOTER)
     show_menu(call.message.chat.id, PHOTOS["admin"], "\n".join(lines), _adm_back("menu_admin"), call=call)
@@ -14733,7 +14733,7 @@ _PAYMENT_STATUS_EMOJIS = {"pending":"⏳","approved":"✅","rejected":"❌","ref
 _PLAN_DISPLAY_NAMES  = {"free":"🆓 Free","basic":"🥈 Basic","pro":"🥇 Pro","ultra":"💎 Ultra"}
 _PLAN_ORDER          = ["free","basic","pro","ultra"]
 _CURRENCY_SYMBOLS = {
-    "USD":"$","EUR":"€","GBP":"£","INR":"₹","JPY":"¥","CNY":"¥","RUB":"₽","TRY":"₺",
+    "USD":"ကျပ်","EUR":"€","GBP":"£","INR":"₹","JPY":"¥","CNY":"¥","RUB":"₽","TRY":"₺",
     "KRW":"₩","BRL":"R$","AUD":"A$","CAD":"C$","CHF":"CHF","SGD":"S$","HKD":"HK$",
     "MXN":"MX$","AED":"د.إ","SAR":"﷼","ZAR":"R","THB":"฿","IDR":"Rp","MYR":"RM",
     "PHP":"₱","VND":"₫","PKR":"₨","BDT":"৳","EGP":"£","NGN":"₦","KES":"Ksh",
@@ -15556,7 +15556,7 @@ def render_main_menu(chat_id: int, uid: int,
         f"{bullet('Plan', plan['name'])}\n"
         f"{bullet('Until', fmt_ts(u.get('plan_expires')) if u.get('plan_expires') else 'Forever' if plan['price'] == 0 else '—')}\n"
         f"{bullet('Bots', str(len(bots)) + ' / ' + str(user_max_bots(u)) + '  (running ' + str(running) + ')')}\n"
-        f"{bullet('Wallet', '{}$'.format(u.get('wallet', 0)))}\n"
+        f"{bullet('Wallet', '{}ကျပ်'.format(u.get('wallet', 0)))}\n"
         f"{G['div']}\nChoose an option below.{FOOTER}"
     )
     show_menu(chat_id, PHOTOS["main"], cap, main_menu_kb(is_admin(uid)), call=call)
@@ -15615,7 +15615,7 @@ def render_upload_menu(call: types.CallbackQuery) -> None:
 def render_plans_menu(call: types.CallbackQuery) -> None:
     lines = []
     for key, v in PLAN_LIMITS.items():
-        price_txt = "Free" if v["price"] == 0 else f"{v['price']}$"
+        price_txt = "Free" if v["price"] == 0 else f"{v['price']}ကျပ်"
         live_bots = int(get_setting(f"plan_max_bots_{key}", v["max_bots"]))
         detail = f"{live_bots} bots {G['bullet']} {v['ram']} MB RAM {G['bullet']} {price_txt}"
         lines.append(bullet(v["name"], detail))
@@ -15640,7 +15640,7 @@ def render_plan_detail(call: types.CallbackQuery, plan: str) -> None:
         f"{bullet('RAM per bot', '{} MB'.format(p['ram']))}\n"
         f"{bullet('Auto-restart', 'Yes' if p['auto_restart'] else 'No')}\n"
         f"{bullet('Duration', 'Lifetime' if plan == 'lifetime' else '{} days'.format(p['days']))}\n"
-        f"{bullet('Price', 'Free' if p['price'] == 0 else '{}$'.format(p['price']))}\n"
+        f"{bullet('Price', 'Free' if p['price'] == 0 else '{}ကျပ်'.format(p['price']))}\n"
         f"{bullet('GitHub hosting', 'Yes' if plan not in ('free',) else 'No')}\n"
         f"{G['div']}\n{sc('Tap buy to choose a payment method')}.{FOOTER}"
     )
@@ -15667,7 +15667,7 @@ def render_payment_methods_for(call: types.CallbackQuery, plan: str) -> None:
         f"<b>{G['wallet']} {sc('Choose Payment Method')}</b>\n"
         f"{G['div_eq']}\n"
         f"{bullet('Plan', p['name'])}\n"
-        f"{bullet('Price', '{}$'.format(p['price']))}\n"
+        f"{bullet('Price', '{}ကျပ်'.format(p['price']))}\n"
         f"{G['div']}\n{sc('Pick the method you will pay with')}.{FOOTER}"
     )
     show_menu(call.message.chat.id, PHOTOS.get("pay", PHOTOS["wallet"]), cap, payments_kb(plan), call=call)
@@ -15688,7 +15688,7 @@ def render_payment_screen(call: types.CallbackQuery, data: str) -> None:
         f"{bullet('Type', pm['type'])}\n"
     )
     if p:
-        cap += f"{bullet('Plan', p['name'])}\n{bullet('Amount', '{}$'.format(p['price']))}\n"
+        cap += f"{bullet('Plan', p['name'])}\n{bullet('Amount', '{}ကျပ်'.format(p['price']))}\n"
     cap += (
         f"{G['div']}\n"
         f"<b>{sc('How to pay')}:</b>\n"
@@ -15725,7 +15725,7 @@ def render_profile(call: types.CallbackQuery) -> None:
         f"{bullet('User ID', uid)}\n"
         f"{bullet('Plan', p['name'])}\n"
         f"{bullet('Until', fmt_ts(u.get('plan_expires')) if u.get('plan_expires') else 'Forever' if p['price'] == 0 else '—')}\n"
-        f"{bullet('Wallet', '{}$'.format(u.get('wallet', 0)))}\n"
+        f"{bullet('Wallet', '{}ကျပ်'.format(u.get('wallet', 0)))}\n"
         f"{bullet('Bots', str(len(bots)) + ' / ' + str(user_max_bots(u)))}\n"
         f"{bullet('Joined', fmt_ts(u.get('joined')))}\n"
         f"{bullet('Referrals', u.get('ref_count', 0))}\n"
@@ -15760,7 +15760,7 @@ def render_wallet(call: types.CallbackQuery) -> None:
     cap = (
         f"<b>{G['wallet']} {sc('Wallet')}</b>\n"
         f"{G['div_eq']}\n"
-        f"{bullet('Balance', '{}$'.format(u.get('wallet', 0)))}\n"
+        f"{bullet('Balance', '{}ကျပ်'.format(u.get('wallet', 0)))}\n"
         f"{G['div']}\n"
         f"{sc('Top up by sending payment proof. Admin will credit your wallet')}.{FOOTER}"
     )
@@ -15870,7 +15870,7 @@ def render_user_stats(call: types.CallbackQuery) -> None:
         f"{bullet('Slots', str(len(bots)) + ' / ' + str(user_max_bots(u)))}\n"
         f"{G['div']}\n"
         f"{bullet('Payments', len(pays))}\n"
-        f"{bullet('Wallet', '{}$'.format(u.get('wallet', 0)))}\n"
+        f"{bullet('Wallet', '{}ကျပ်'.format(u.get('wallet', 0)))}\n"
         f"{G['div']}\n"
         f"{bullet('Referrals', u.get('ref_count', 0))}\n"
         f"{bullet('Bonus Slots', u.get('bot_slots_bonus', 0))}\n"
@@ -16351,7 +16351,7 @@ def render_admin(call: types.CallbackQuery) -> None:
         f"{bullet('Users',   len(d['users']))}\n"
         f"{bullet('Bots',    len(d['bots']))}\n"
         f"{bullet('Running', running_n)}\n"
-        f"{bullet('Revenue', '{}$'.format(revenue))}\n"
+        f"{bullet('Revenue', '{}ကျပ်'.format(revenue))}\n"
         f"{bullet('Pending', pending_n)}\n"
         f"{G['div']}{FOOTER}"
     )
@@ -16378,7 +16378,7 @@ def render_adm_stats(call: types.CallbackQuery) -> None:
         f"{bullet('New today', new_today)}\n"
         f"{bullet('Total bots', len(d['bots']))}\n"
         f"{bullet('Running', sum(1 for x in RUNNING.values() if x['proc'].poll() is None))}\n"
-        f"{bullet('Revenue', '{}$'.format(revenue))}\n"
+        f"{bullet('Revenue', '{}ကျပ်'.format(revenue))}\n"
         f"{bullet('Panel RAM', fmt_bytes(int(rss)))}\n"
         f"{bullet('Uptime', fmt_dur(int(time.time() * 1000) - START_TS))}\n"
         f"{G['div']}{FOOTER}"
@@ -16825,7 +16825,7 @@ def action_payment_approve(call: types.CallbackQuery, pid: str) -> None:
             try:
                 bot.send_message(pay["uid"],
                     f"<b>{G['ok']} {sc('Wallet credited')}</b>\n"
-                    f"{bullet('Amount', '{}$'.format(pay['amount']))}", parse_mode="HTML")
+                    f"{bullet('Amount', '{}ကျပ်'.format(pay['amount']))}", parse_mode="HTML")
             except Exception:
                 pass
     elif pay.get("plan"):
@@ -17423,7 +17423,7 @@ def _handle_admin_finduser(m: types.Message) -> None:
         f"{bullet('Plan', u.get('plan', 'free'))}\n"
         f"{bullet('Joined', fmt_ts(u.get('joined')))}\n"
         f"{bullet('Bots', len(bots))}\n"
-        f"{bullet('Wallet', '{}$'.format(u.get('wallet', 0)))}\n"
+        f"{bullet('Wallet', '{}ကျပ်'.format(u.get('wallet', 0)))}\n"
         f"{bullet('Banned', u.get('banned', False))}\n"
         f"{bullet('Verified', 'Yes' if u.get('verified') else 'No')}\n"
         f"{G['div']}{FOOTER}"
@@ -17697,7 +17697,7 @@ def _handle_payment_proof(m: types.Message, st: Dict[str, Any]) -> None:
         f"<b>{G['wallet']} New Payment Proof</b>\n"
         f"{bullet('ID', pid)}\n{bullet('From', m.from_user.id)}\n"
         f"{bullet('Method', method)}\n{bullet('Plan', plan or '—')}\n"
-        f"{bullet('Amount', '{}$'.format((p or {}).get('price', 0)))}"
+        f"{bullet('Amount', '{}ကျပ်'.format((p or {}).get('price', 0)))}"
     )
     try: bot.send_message(OWNER_ID, f"<b>Decide #{pid}</b>", parse_mode="HTML", reply_markup=kb)
     except Exception: pass
@@ -17738,7 +17738,7 @@ def _handle_topup_proof(m: types.Message) -> None:
     notify_owner(
         f"<b>{G['wallet']} Wallet Top-up</b>\n"
         f"{bullet('ID', pid)}\n{bullet('From', m.from_user.id)}\n"
-        f"{bullet('Amount', '{}$'.format(amt))}"
+        f"{bullet('Amount', '{}ကျပ်'.format(amt))}"
     )
     try: bot.send_message(OWNER_ID, f"<b>Decide #{pid}</b>", parse_mode="HTML", reply_markup=kb)
     except Exception: pass
@@ -18386,7 +18386,7 @@ def on_text(m: types.Message) -> None:
                 db_save(d)
                 audit(uid, "wallet_adjust", f"uid={target_uid} old={cur} new={new_bal}")
                 USER_STATES.pop(uid, None)
-                bot.reply_to(m, f"{G['ok']} uid <code>{target_uid}</code>: <b>{cur}$</b> \u2192 <b>{new_bal}$</b>",
+                bot.reply_to(m, f"{G['ok']} uid <code>{target_uid}</code>: <b>{cur}ကျပ်</b> \u2192 <b>{new_bal}ကျပ်</b>",
                              parse_mode="HTML")
             except Exception as _we:
                 bot.reply_to(m, f"{G['no']} Error: <code>{esc(_we)}</code>", parse_mode="HTML")
